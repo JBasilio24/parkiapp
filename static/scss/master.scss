@@ -1,0 +1,252 @@
+@import "componentes/variables";
+@import "componentes/format";
+// Text Colors
+// ==========================================================================
+.text-color-accent {
+  color: $secondary-color-light !important;
+}
+.text-color-primary {
+  color: $text-color-primary !important;
+}
+.text-color-shade {
+  color: $text-color-shade !important;
+}
+.text-color-secondary {
+  color: $text-color-secondary !important;
+}
+.text-color-error {
+  color: $error-color !important;
+}
+ 
+// INPUT COLORS OVERRIDE
+// ==========================================================================
+/* label color */
+.input-field label {
+  color: $text-color-shade;
+}
+/* label focus color */
+textarea.materialize-textarea:focus + label.active,
+.input-field input[type=text]:focus.validate + label.active,
+.input-field input[type=tel]:focus.validate + label.active,
+.input-field input[type=email]:focus.validate + label.active,
+.input-field input[type=url]:focus.validate + label.active {
+  color: $primary-color-light;
+}
+/* label underline focus color */
+textarea.materialize-textarea:focus:not([readonly]),
+.input-field input[type=text]:focus.validate,
+.input-field input[type=tel]:focus.validate,
+.input-field input[type=email]:focus.validate,
+.input-field input[type=url]:focus.validate {
+  border-bottom: 1px solid $primary-color-light;
+  box-shadow: 0 1px 0 0 $primary-color-light;
+}
+/* valid color */
+.input-field input[type=text].valid,
+.input-field input[type=tel].valid,
+.input-field input[type=email].valid,
+.input-field input[type=url].valid {
+  border-bottom: 1px solid $success-color;
+  box-shadow: 0 1px 0 0 $success-color;
+}
+/* invalid color */
+.input-field input[type=text].invalid,
+.input-field input[type=tel].invalid,
+.input-field input[type=email].invalid,
+.input-field input[type=url].invalid {
+  border-bottom: 1px solid $error-color;
+  box-shadow: 0 1px 0 0 $error-color;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: $text-color-primary;
+}
+
+// BASE
+// ==========================================================================
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+footer.page-footer  {
+  background-color: $primary-color;
+  font-size: .9rem;
+}
+.icon-container .icon {
+  &-info {
+    color: $text-color-shade;
+  }
+  &-info:hover {
+    color: lighten($text-color-shade, 20%);
+  }
+  &-edit {
+    color: $primary-color;
+  }
+  &-edit:hover {
+    color: lighten($primary-color, 20%);
+  }
+  &-delete {
+    color: $error-color;
+  }
+  &-delete:hover {
+    color: lighten($error-color, 20%);
+  }
+  &-addimage {
+    color: lighten($primary-color, 20%);
+    font-size: 80px;
+  }
+}
+main {
+  flex: 1 0 auto;
+}
+nav,
+nav .button-collapse,
+nav ul li a {
+  color: $text-color-primary;
+  display: flex;
+}
+nav .brand-logo {
+  color: $shade-color;
+}
+textarea.materialize-textarea {
+  height: 3rem;
+  padding: .8rem 0 .2rem;
+}
+ul.dropdown-content {
+  margin-top: 4.2rem;
+  align-content: center;
+}
+.container.max-cont {
+  height: 100vh;
+  justify-content: center;
+}
+.file-field .btn {
+  background-color: $primary-color;
+  &:hover {
+  background-color: $primary-color-light;
+  }
+}
+.color {
+  &-secondary {
+    background-color: $secondary-color !important;
+  }
+  &-primary {
+    background-color: $primary-color !important;
+    &-darken {
+      background-color: $primary-color-dark !important;
+    }
+    &-lighten {
+      background-color: $primary-color-light !important;
+    }
+  }
+  &-shade {
+    background-color: $shade-color !important;
+  }
+}
+.container-wide {
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  a.btn {
+    border-radius: 100px;
+    margin-top: 1rem;
+  }
+}
+.header {
+  font-weight: 300;
+}
+.dropdown-content li {
+  >span, >a {
+    color: $link-color;
+  }
+}
+tr td.td-icons-container {
+  display: flex;
+  justify-content: center;
+  span.icon-container {
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow: hidden;
+    transition: all .3s;
+    i {
+      font-size: 1.7rem;
+    }
+  }
+}
+.login-card {
+  .card-content {
+    padding-top: 8rem;
+    padding-bottom: .5rem;
+  }
+  i#login-icon {
+  font-size: 8rem;
+  color: $primary-color;
+  margin: 1rem auto;
+  }
+}
+.parallax-container {
+  height: 240px;
+  .parallax img {
+    max-width: 200%;
+  }
+  .parallax-body {
+    display: flex;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    color: $shade-color;
+    align-items: center;
+  }
+}
+.m {
+  &t-0 { margin-top: 0; }
+  &t-1 { margin-top: 1rem; }
+  &t-2 { margin-top: 2rem; }
+  &t-3 { margin-top: 3rem; }
+  &b-0 { margin-bottom: 0; }
+  &b-1 { margin-bottom: 1rem ; }
+  &b-2 { margin-bottom: 2rem; }
+  &b-3 { margin-bottom: 3rem; }
+}
+.material-icons {
+  color: $text-color-shade;
+  &.prefix.active{
+    color: $primary-color-light;
+  }
+}
+.promo {
+  i {
+    font-size: 10rem;
+    color: $primary-color;
+  }
+  p.promo-caption {
+    font-size: 1.5rem;
+    margin-top: 5px;
+  }
+}
+
+// MEDIA QUERIES
+// ==========================================================================
+@media #{$small-and-up} {
+  footer.page-footer .row .col {
+    &:nth-child(1) { text-align: left; }
+    &:nth-child(2) { text-align: right; }
+  }
+}
+
+@media #{$medium-and-up} {
+  .parallax-container {
+    height: 380px;
+  }
+  .promo {
+    i {
+      font-size: 12rem;
+    }
+    p.promo-caption {
+      font-size: 1.7rem;
+    }
+  }
+}

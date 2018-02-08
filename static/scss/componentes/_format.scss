@@ -1,0 +1,12 @@
+/**
+ * Formatea el color de celdas por jquery dateTable
+ */
+table.dataTable  {
+  thead th,
+  thead td {
+    border: none;
+  }
+  &.no-footer {
+    border-bottom: none;
+  }
+}

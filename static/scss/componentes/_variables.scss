@@ -1,0 +1,35 @@
+// 1. Colors
+// ==========================================================================
+
+$shade-color: #F5F5F5 !default;
+$text-color-primary: #232323 !default;
+$text-color-secondary: #f5f5f5 !default;
+$text-color-shade: lighten($text-color-primary, 35%) !default;
+
+$primary-color: #2a56c6 !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: #ffab00 !default;
+$secondary-color-light: lighten($secondary-color, 10%) !default;
+$secondary-color-dark: darken($secondary-color, 10%) !default;
+
+$success-color: #00c853 !default;
+$error-color: #f44336 !default;
+$link-color: #039be5 !default;
+
+
+// 12. Global
+// ==========================================================================
+
+// Media Query Ranges
+$small-screen: 600px !default;
+$small-screen-up: 601px !default;
+$medium-screen: 992px !default;
+$medium-screen-up: 993px !default;
+$large-screen: 1200px !default;
+$large-screen-up: 1201px !default;
+
+$small-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$medium-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;

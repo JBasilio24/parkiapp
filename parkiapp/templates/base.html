@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="{% static 'css/master.css' %}">
+  {% block stylesheets %}
+  {% endblock %}
+</head>
+<body class="color-shade">
+  <header>
+    <!-- USER DROPDOWN CONTENT -->
+    <ul id="user-menu" class="dropdown-content">
+      <li><a href="{% url 'users:logout'  %}">Cerrar Sesión</a></li>
+    </ul>
+    <!-- SIDE NAV -->
+    <ul id="slide-out" class="side-nav">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="{% static 'image/agenda3.jpg'%}">
+          </div>
+          <a href="#!user">
+            {% if request.user.avatar %}
+            <img class="circle" src="{{ request.user.avatar.url }}">
+            {% else %}
+            <img class="circle" src="{% static 'image/person-flat.png' %}">
+            {% endif %}
+          </a>
+          {% if request.user.is_authenticated %}
+          <a href="#!name" class="white-text">
+            <span class="text-color-secondary name">{{ request.user }}</span>
+          </a>
+          {% else %}
+          <a href="{% url 'users:login' %}">
+            <span class="white-text name">Usuario anónimo</span>
+          </a>
+          {% endif %}
+          <a href="#!email"><span class="white-text email">{{ request.user.email }}</span></a>
+        </div>
+      </li>
+      {% if request.user.is_authenticated %}
+      <li>
+        <a href="{% url 'contactos:contactos' %}">
+          <i class="material-icons">contacts</i>Contactos
+        </a>
+      </li>
+      <li>
+        <a href="#!">
+          <i class="material-icons">today</i>Agenda
+        </a>
+      </li>
+      {% endif %}
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="subheader">Usuario</a></li>
+      {% if not request.user.is_authenticated %}
+      <li>
+        <a class="waves-effect" href="{% url 'users:login' %}">
+          <i class="material-icons">input</i>Iniciar Sesión
+        </a>
+      </li>
+      {% endif %}
+      {% if request.user.is_superuser %}
+      <li>
+        <a class="waves-effect" href="{% url 'admin:login' %}">
+          <i class="material-icons" >settings</i>Panel de Control
+        </a>
+      </li>
+      {% endif %}
+      {% if request.user.is_authenticated %}
+      <li>
+        <a class="waves-effect" href="{% url 'users:logout' %}">
+          <i class="material-icons">exit_to_app</i>Cerrar Sesión
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+    <!-- NAVBAR -->
+    <div class="navbar-fixed">
+      <nav class="white">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="{% url 'contactos:home' %}" class="brand-logo text-color-primary">DigiAgenda</a>
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="{% url 'contactos:contactos' %}">Contactos</a></li>
+              <li><a href="badges.html">Eventos</a></li>
+              {% if request.user.is_authenticated %}
+              <li>
+                <a data-activates="user-menu" class="dropdown-button">
+                  {{ request.user }}<i class="material-icons">arrow_drop_down</i>
+                </a>
+              </li>
+              {% else %}
+              <li><a href="{% url 'users:login' %}"><span>Iniciar Sesión</span></a></li>
+              {% endif %}
+              {% if request.user.is_superuser %}
+              <li><a href="{% url 'admin:login' %}">Panel de Control</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer class="page-footer ">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h5>DigiAgenda</h5>
+          <p>Todos tus contactos, un mismo lugar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="row mb-0">
+          <div class="col s12 m7 center">
+            © 2017 Digimundo. Todos los derechos reservados.
+          </div>
+          <div class="col s12 m5 center">
+            <a class="grey-text text-lighten-4" href="#!">Made with ♥ by Digimundo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".button-collapse").sideNav();
+      $('.parallax').parallax();
+      $('select').material_select();
+    });
+
+  </script>
+  <script type="text/javascript" src='http://localhost:35729/livereload.js'>
+  </script>
+  {% block scripts %}
+  {% endblock %}
+</body>
+</html>
